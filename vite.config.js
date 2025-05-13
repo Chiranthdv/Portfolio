@@ -4,15 +4,14 @@ import react from '@vitejs/plugin-react'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-  server: {
-    host: true,        // ✅ Exposes to 0.0.0.0 (important for Render)
+ server: {
+    host: true,
     port: 10000,
-  },
-  build: {
-    outDir: 'dist', // Ensure the build output goes to the 'dist' directory
+    allowedHosts: ['.onrender.com'], // ✅ Allow all Render subdomains
   },
   preview: {
-    host: true,        // ✅ Exposes preview server as well
+    host: true,
     port: 10000,
+    allowedHosts: ['.onrender.com'], // ✅ Same for preview mode
   },
 })
